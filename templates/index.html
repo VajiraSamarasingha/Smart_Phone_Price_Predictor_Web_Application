@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatable" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Predictor</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">
+            Phone Price Predictor
+        </div>
+
+        <form action="/" method="post">
+            <div class="inputfield">
+                <label for="ram">RAM (GB)</label>
+                <input type="text" class="input" name="ram" required>               
+            </div>
+
+            <div class="inputfield">
+                <label for="romstorage">ROM/Storage</label>
+                <input type="text" class="input" name="romstorage" required>               
+            </div>
+            <div class="inputfield">
+                <label for="frontcamera">Front Camera</label>
+                <input type="text" class="input" name="frontcamera" required>               
+            </div>
+            <div class="inputfield">
+                <label for="battery">Battery (mah)</label>
+                <input type="text" class="input" name="battary" required>               
+            </div>
+
+            <div class="inputfield">
+                <label for="phonename">Phone Name</label>
+                <div class="custom_select">
+                    <select name="phonename" id="phonename" required>
+                        <option value="" selected hidden>Select</option>
+                        <option value="OnePlus 10R 5G (Sierra Black, 256 GB)">OnePlus 10R 5G (Sierra Black, 256 GB)</option>
+                        <option value="Nokia 3310 DS 2020">Nokia 3310 DS 2020</option>
+                        <option value="Nokia 8210 4G">Nokia 8210 4G</option>
+                        <option value="OnePlus Nord CE 2 5G (Bahama Blue, 128 GB)">OnePlus Nord CE 2 5G (Bahama Blue, 128 GB)</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>            
+            </div>
+            <div class="inputfield">
+                <label for="processor">Phone Name</label>
+                <div class="custom_select">
+                    <select name="processor" id="processor" required>
+                        <option value="" selected hidden>Select</option>
+                        <option value="Qualcomm Snapdragon 680 Processor">Qualcomm Snapdragon 680 Processor</option>
+                        <option value="Qualcomm Snapdragon 778G Processor">Qualcomm Snapdragon 778G Processor</option>
+                        <option value="Mediatek Helio P35 Processor">Mediatek Helio P35 Processor</option>
+                        <option value="Unisoc T612 Processor">OneUnisoc T612 Processor</option>
+                        <option value="Mediatek Dimensity 920 Processor">Mediatek Dimensity 920 Processor </option>
+                        <option value="Qualcomm Snapdragon 870 Processor">Qualcomm Snapdragon 870 Processor</option>
+                        <option value="Qualcomm Snapdragon 695 Processor">Qualcomm Snapdragon 695 Processor</option>
+                        <option value="Qualcomm Snapdragon 439 Processor">Qualcomm Snapdragon 439 Processor</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>            
+            </div>
+            <div class="inputfield">
+                <label for="Back/Rare Camera">Back/Rare Camera</label>
+                <div class="custom_select">
+                    <select name="Back/Rare Camera" id="Back/Rare Camera" required>
+                        <option value="" selected hidden>Select</option>
+                        <option value="50MP Rear Camera">50MP Rear Camera</option>
+                        <option value="13MP Rear Camera">13MP Rear Camera</option>
+                        <option value="13MP + 2MP">13MP + 2MP</option>
+                        <option value="12MP + 12MP">12MP + 12MP</option>
+                        <option value="50MP + 2MP + 2MP">50MP + 2MP + 2MP</option>
+                        <option value="50MP + 2MP">50MP + 2MP</option>
+                        <option value="12MP Rear Camera">12MP Rear Camera</option>
+                        <option value="13MP + 2MP + 2MP">13MP + 2MP + 2MP</option>
+                        <option value="50MP + 8MP + 2MP">50MP + 8MP + 2MP</option>
+                        <option value="48MP + 2MP + 2MP">48MP + 2MP + 2MP</option>
+                        <option value="48MP Rear Camera">48MP Rear Camera</option>
+                        <option value="0.3MP Rear Camera">0.3MP Rear Camera</option>
+                        <option value="64MP Rear Camera">64MP Rear Camera</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>            
+            </div>
+
+            <div class="check">
+                <label  for ="Touch">Rating</label>
+                <div class="rating-option">
+                    <label for="1">1.0</label>
+                    <input type="radio" id="1" name="rating" value="1">
+                    <label for="2">2.0</label>
+                    <input type="radio" id="2" name="rating" value="2">
+                    <label for="3">3.0</label>
+                    <input type="radio" id="3" name="rating" value="3">
+                    <label for="4">4.0</label>
+                    <input type="radio" id="4" name="rating" value="4">
+                    <label for="5">5.0</label>
+                    <input type="radio" id="5" name="rating" value="5">
+                </div>
+            </div>
+            <div class="inputfield">
+                <label for="Number of Ratings">Number of Ratings</label>
+                <input type="text" class="input" name="Number of Ratings" required>               
+            </div>
+
+            
+
+            <div class="inputfield">
+                <input type="submit" value="PredictPrice" class="btn" >              
+            </div>
+
+
+
+            
+        </form>
+        <div class="result">
+            <p>
+                {{ pred }}
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const ratingInputs = document.querySelectorAll('.rating');
+    
+        ratingInputs.forEach(input => {
+            input.addEventListener('click', () => {
+                ratingInputs.forEach(otherInput => {
+                    if (otherInput !== input) {
+                        otherInput.disabled = true;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
